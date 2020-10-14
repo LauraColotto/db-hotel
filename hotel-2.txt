@@ -1,0 +1,2 @@
+2-Somma i prezzi dei pagamenti raggruppandoli per status:
+SELECT SUM( `price`) FROM `pagamenti` GROUP BY `status`
