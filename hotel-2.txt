@@ -34,3 +34,13 @@ SELECT `ospite_id`, `name`, `lastname`, COUNT("id") FROM `ospiti` JOIN `prenotaz
 SELECT `prenotazione_id`, `ospite_id`, `name`, `lastname` FROM `prenotazioni_has_ospiti` JOIN `ospiti` ON ospiti.id = prenotazioni_has_ospiti.ospite_id
 
 
+3- Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018
+SELECT prenotazioni.created_at, prenotazioni.id, paganti.name, paganti.lastname, pagamenti.price
+FROM `pagamenti`
+JOIN `paganti`
+ON pagamenti.pagante_id = paganti.id
+JOIN `prenotazioni`
+ON pagamenti.prenotazione_id = prenotazioni.id
+WHERE YEAR(prenotazioni.created_at) = 2018
+AND MONTH(prenotazioni.created_at) = 05
+ORDER BY prenotazioni.created_at;
