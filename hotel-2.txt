@@ -44,3 +44,14 @@ ON pagamenti.prenotazione_id = prenotazioni.id
 WHERE YEAR(prenotazioni.created_at) = 2018
 AND MONTH(prenotazioni.created_at) = 05
 ORDER BY prenotazioni.created_at;
+
+
+4- Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
+SELECT SUM(pagamenti.price)
+FROM `stanze`
+JOIN `prenotazioni`
+ON stanze.id = prenotazioni.stanza_id
+JOIN `pagamenti`
+ON prenotazioni.id = pagamenti.prenotazione_id
+WHERE `floor` = 1
+
