@@ -55,3 +55,10 @@ JOIN `pagamenti`
 ON prenotazioni.id = pagamenti.prenotazione_id
 WHERE `floor` = 1
 
+
+5- Prendi i dati di fatturazione per la prenotazione con id=7
+SELECT paganti.name, paganti.lastname, paganti.address, pagamenti.price, pagamenti.created_at
+FROM `paganti`
+JOIN `pagamenti`
+ON paganti.id = pagamenti.pagante_id
+WHERE pagamenti.prenotazione_id = 7
